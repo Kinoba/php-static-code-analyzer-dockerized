@@ -25,6 +25,7 @@ For now this image is able to run:
 
 ```
 docker build . -t kinoba/php-static-code-analyzer
+docker push kinoba/php-static-code-analyzer
 ```
 
 ## TODO
