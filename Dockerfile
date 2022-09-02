@@ -20,15 +20,12 @@ RUN apt-get update \
 
 USER phpman
 
-RUN composer global config --no-plugins allow-plugins.phpstan/extension-installer true \
-  && composer global require \
+RUN composer global require \
       friendsoftwig/twigcs \
       pdepend/pdepend \
       phploc/phploc \
       phpmd/phpmd \
-      phpstan/extension-installer \
       phpstan/phpstan \
-      phpstan/phpstan-symfony \
       sebastian/phpcpd \
       squizlabs/php_codesniffer
 
