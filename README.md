@@ -24,7 +24,7 @@ For now this image is able to run:
 ## Contribute
 
 ```
-docker build . -t kinoba/php-static-code-analyzer
+DOCKER_DEFAULT_PLATFORM=linux/amd64 docker build . -t kinoba/php-static-code-analyzer
 docker push kinoba/php-static-code-analyzer
 ```
 
