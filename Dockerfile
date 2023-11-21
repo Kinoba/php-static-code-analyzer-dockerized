@@ -21,5 +21,5 @@ WORKDIR /app
 
 USER phpman
 
-COPY composer.json composer.lock ./
+COPY --chown=phpman:phpman composer.json composer.lock ./
 RUN composer install
