@@ -14,7 +14,7 @@ RUN apt-get update \
   && apt-get -y --no-install-recommends install git unzip zip \
   && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
   && useradd -ms /bin/bash phpman \
-  && mkdir -p /app/vendor \
+  && mkdir -p /app/vendor /app/var/cache/test \
   && chown -R phpman:phpman /app
 
 WORKDIR /app
