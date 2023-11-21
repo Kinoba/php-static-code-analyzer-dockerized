@@ -1,4 +1,4 @@
-FROM phpdockerio/php:8.1-fpm
+FROM phpdockerio/php:8.2-fpm
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=en_US.UTF-8
