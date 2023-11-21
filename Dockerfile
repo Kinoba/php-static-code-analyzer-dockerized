@@ -3,7 +3,7 @@ FROM phpdockerio/php:8.1-fpm
 ENV LC_ALL=C.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
-ENV PATH="/home/phpman/.config/composer/vendor/bin/:/usr/local/bin/:${PATH}"
+ENV PATH="/app/vendor/bin/:/usr/local/bin/:${PATH}"
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
@@ -14,19 +14,12 @@ RUN apt-get update \
   && apt-get -y --no-install-recommends install git unzip zip \
   && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
   && useradd -ms /bin/bash phpman \
-  && mkdir -p /home/phpman/.config/composer/vendor \
-  && ln -s /home/phpman/.config/composer/vendor /vendor \
-  && chown -R phpman:phpman /home/phpman /vendor
+  && mkdir -p /app/vendor \
+  && chown -R phpman:phpman /app
+
+WORKDIR /app
 
 USER phpman
 
-RUN composer global require \
-      friendsoftwig/twigcs \
-      pdepend/pdepend \
-      phploc/phploc \
-      phpmd/phpmd \
-      phpstan/phpstan \
-      sebastian/phpcpd \
-      squizlabs/php_codesniffer
-
-WORKDIR /app
+COPY composer.json composer.lock ./
+RUN composer install

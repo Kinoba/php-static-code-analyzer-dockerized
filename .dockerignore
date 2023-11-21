@@ -1,0 +1,8 @@
+/.dockerignore
+/.gitignore
+
+/Dockerfile
+
+/README.md
+
+/vendor
