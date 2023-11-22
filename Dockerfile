@@ -13,7 +13,8 @@ RUN apt-get update \
   && chmod +x /usr/local/bin/phpdox \
   && apt-get -y --no-install-recommends install git unzip zip \
   && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
-  && useradd -ms /bin/bash phpman \
+  && groupadd -g 7777 phpman \
+  && useradd -m -s /bin/bash -u 7777 -g 7777 phpman \
   && mkdir -p /app/vendor /app/var/cache/test \
   && chown -R phpman:phpman /app
 
